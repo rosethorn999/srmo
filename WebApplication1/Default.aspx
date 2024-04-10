@@ -4,41 +4,44 @@
 
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-            <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+            <h1 id="aspnetTitle">Welcome</h1>
+            <p class="lead">Use textbox to modify price and <b>save</b> button to persist data.</p>
         </section>
-
-        <div class="row">
-            <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-                <h2 id="gettingStartedTitle">Getting started</h2>
-                <p>
-                    ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-                A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="librariesTitle">
-                <h2 id="librariesTitle">Get more libraries</h2>
-                <p>
-                    NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="hostingTitle">
-                <h2 id="hostingTitle">Web Hosting</h2>
-                <p>
-                    You can easily find a web hosting company that offers the right mix of features and price for your applications.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-                </p>
-            </section>
-        </div>
+        <section>
+            <asp:GridView ID="gvTest" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="ObjectDataSource1" Width="328px">
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
+                    <asp:BoundField DataField="PN" HeaderText="PN" SortExpression="PN" />
+                </Columns>
+            </asp:GridView>
+            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="WebApplication1.dsTestTableAdapters.ItemMasterTableAdapter" UpdateMethod="Update">
+                <DeleteParameters>
+                    <asp:Parameter Name="Original_ID" Type="Int32" />
+                </DeleteParameters>
+                <InsertParameters>
+                    <asp:Parameter Name="ID" Type="Int32" />
+                    <asp:Parameter Name="PN" Type="String" />
+                </InsertParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="PN" Type="String" />
+                    <asp:Parameter Name="Original_ID" Type="Int32" />
+                </UpdateParameters>
+            </asp:ObjectDataSource>
+            <hr />
+            <asp:GridView ID="gvitems" runat="server" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" />
+                    <asp:BoundField DataField="PN" HeaderText="PN" />
+                    <asp:BoundField DataField="SalesOrg" HeaderText="SalesOrg" HeaderStyle-Width="100" />
+                    <asp:TemplateField HeaderText="Price">
+                        <ItemTemplate>
+                            <asp:TextBox ID="txtPrice" runat="server" Text='<%# Eval("Price") %>'></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" Width="100" />
+        </section>
     </main>
 
 </asp:Content>
