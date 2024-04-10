@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="master" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.ItemMaster" Member="ItemMasters">
+    <Type Name="ItemMaster">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ItemMaster_ItemDetail" Member="ItemDetails" ThisKey="ID" OtherKey="ID" Type="ItemDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemDetail" Member="ItemDetails">
+    <Type Name="ItemDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SalesOrg" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Association Name="ItemMaster_ItemDetail" Member="ItemMaster" ThisKey="ID" OtherKey="ID" Type="ItemMaster" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
