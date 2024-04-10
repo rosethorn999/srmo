@@ -33,11 +33,11 @@
                 <asp:BoundField DataField="SalesOrg" HeaderText="SalesOrg" />
                 <asp:TemplateField HeaderText="Price">
                     <ItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Price") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtPrice" runat="server" Text='<%# Eval("Price") %>'></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:Button ID="Button1" runat="server" Text="Save" />
+        <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click"/>
     </main>
 </asp:Content>

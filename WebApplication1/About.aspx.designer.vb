@@ -41,11 +41,11 @@ Partial Public Class About
     Protected WithEvents gvitems As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Button1 control.
+    '''btnSave control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
 End Class
