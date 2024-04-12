@@ -5,12 +5,11 @@
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="masterConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="masterConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.masterConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
-          
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemMasterTableAdapter" GeneratorDataComponentClassName="ItemMasterTableAdapter" Name="ItemMaster" UserDataComponentName="ItemMasterTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="masterConnectionString (Web.config)" DbObjectName="master.dbo.ItemMaster" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="masterConnectionString (Web.config)" DbObjectName="master.dbo.ItemMaster" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="taIM" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="taIM" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="taIM" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[ItemMaster] WHERE (([ID] = @Original_ID))</CommandText>
@@ -54,7 +53,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemDetailTableAdapter" GeneratorDataComponentClassName="ItemDetailTableAdapter" Name="ItemDetail" UserDataComponentName="ItemDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="masterConnectionString (Web.config)" DbObjectName="master.dbo.ItemDetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="masterConnectionString (Web.config)" DbObjectName="master.dbo.ItemDetail" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="taID" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="taID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="taID" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[ItemDetail] WHERE (([ID] = @Original_ID))</CommandText>
@@ -107,11 +106,11 @@
   <xs:element name="dsTest" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsTest" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTest">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ItemMaster" msprop:Generator_RowClassName="ItemMasterRow" msprop:Generator_RowEvHandlerName="ItemMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemMasterRowDeleted" msprop:Generator_RowDeletingName="ItemMasterRowDeleting" msprop:Generator_RowEvArgName="ItemMasterRowChangeEvent" msprop:Generator_TablePropName="ItemMaster" msprop:Generator_RowChangedName="ItemMasterRowChanged" msprop:Generator_UserTableName="ItemMaster" msprop:Generator_RowChangingName="ItemMasterRowChanging" msprop:Generator_TableClassName="ItemMasterDataTable" msprop:Generator_TableVarName="tableItemMaster">
+        <xs:element name="ItemMaster" msprop:Generator_RowEvHandlerName="ItemMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemMasterRowDeleted" msprop:Generator_RowDeletingName="ItemMasterRowDeleting" msprop:Generator_RowEvArgName="ItemMasterRowChangeEvent" msprop:Generator_TablePropName="ItemMaster" msprop:Generator_RowChangedName="ItemMasterRowChanged" msprop:Generator_UserTableName="ItemMaster" msprop:Generator_RowChangingName="ItemMasterRowChanging" msprop:Generator_RowClassName="ItemMasterRow" msprop:Generator_TableClassName="ItemMasterDataTable" msprop:Generator_TableVarName="tableItemMaster">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
-              <xs:element name="PN" msprop:Generator_UserColumnName="PN" msprop:Generator_ColumnPropNameInTable="PNColumn" msprop:Generator_ColumnPropNameInRow="PN" msprop:Generator_ColumnVarNameInTable="columnPN">
+              <xs:element name="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="PN" msprop:Generator_ColumnPropNameInTable="PNColumn" msprop:Generator_ColumnPropNameInRow="PN" msprop:Generator_UserColumnName="PN" msprop:Generator_ColumnVarNameInTable="columnPN">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -121,18 +120,18 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ItemDetail" msprop:Generator_RowClassName="ItemDetailRow" msprop:Generator_RowEvHandlerName="ItemDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemDetailRowDeleted" msprop:Generator_RowDeletingName="ItemDetailRowDeleting" msprop:Generator_RowEvArgName="ItemDetailRowChangeEvent" msprop:Generator_TablePropName="ItemDetail" msprop:Generator_RowChangedName="ItemDetailRowChanged" msprop:Generator_UserTableName="ItemDetail" msprop:Generator_RowChangingName="ItemDetailRowChanging" msprop:Generator_TableClassName="ItemDetailDataTable" msprop:Generator_TableVarName="tableItemDetail">
+        <xs:element name="ItemDetail" msprop:Generator_RowEvHandlerName="ItemDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemDetailRowDeleted" msprop:Generator_RowDeletingName="ItemDetailRowDeleting" msprop:Generator_RowEvArgName="ItemDetailRowChangeEvent" msprop:Generator_TablePropName="ItemDetail" msprop:Generator_RowChangedName="ItemDetailRowChanged" msprop:Generator_UserTableName="ItemDetail" msprop:Generator_RowChangingName="ItemDetailRowChanging" msprop:Generator_RowClassName="ItemDetailRow" msprop:Generator_TableClassName="ItemDetailDataTable" msprop:Generator_TableVarName="tableItemDetail">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
-              <xs:element name="SalesOrg" msprop:Generator_UserColumnName="SalesOrg" msprop:Generator_ColumnPropNameInTable="SalesOrgColumn" msprop:Generator_ColumnPropNameInRow="SalesOrg" msprop:Generator_ColumnVarNameInTable="columnSalesOrg">
+              <xs:element name="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="SalesOrg" msprop:Generator_ColumnPropNameInTable="SalesOrgColumn" msprop:Generator_ColumnPropNameInRow="SalesOrg" msprop:Generator_UserColumnName="SalesOrg" msprop:Generator_ColumnVarNameInTable="columnSalesOrg">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="4" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Price" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" type="xs:decimal" />
+              <xs:element name="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" type="xs:decimal" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

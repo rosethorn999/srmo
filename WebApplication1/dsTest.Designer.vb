@@ -1229,7 +1229,7 @@ Namespace dsTestTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As dsTest.ItemMasterDataTable
+        Public Overloads Overridable Function taIM() As dsTest.ItemMasterDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Dim dataTable As dsTest.ItemMasterDataTable = New dsTest.ItemMasterDataTable()
             Me.Adapter.Fill(dataTable)
@@ -1536,7 +1536,7 @@ Namespace dsTestTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As dsTest.ItemDetailDataTable
+        Public Overloads Overridable Function taID() As dsTest.ItemDetailDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Dim dataTable As dsTest.ItemDetailDataTable = New dsTest.ItemDetailDataTable()
             Me.Adapter.Fill(dataTable)

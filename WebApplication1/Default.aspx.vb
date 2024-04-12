@@ -1,26 +1,29 @@
 ﻿Public Class _Default
     Inherits Page
-    ReadOnly ConnectionString As String = ConfigurationManager.ConnectionStrings("masterConnectionString").ConnectionString
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If Not Me.IsPostBack Then
-            Using db As New DataClasses1DataContext(ConnectionString)
-                ' Query the data using LINQ
-                Dim query = From master In db.ItemMasters
-                            Group Join detail In db.ItemDetails
-                            On master.ID Equals detail.ID Into detailGroup = Group
-                            From detailItem In detailGroup.DefaultIfEmpty()
-                            Select master.ID, master.PN, detailItem.SalesOrg, detailItem.Price
+            Dim myDaTest As New daTest()
+            myDaTest.InitializeAndFill()
+            Dim recordsRead As Integer = myDaTest.ReadTest()
 
-                ' Bind the query result to the GridView
-                gvitems.DataSource = query.ToList()
-                gvitems.DataBind()
-            End Using
+            ' Query the data using LINQ
+            Dim query = From masterRow In myDaTest.ds.ItemMaster.AsEnumerable()
+                        Group Join detailRow In myDaTest.ds.ItemDetail.AsEnumerable()
+            On masterRow.Field(Of Integer)("ID") Equals detailRow.Field(Of Integer)("ID") Into detailGroup = Group
+                        From detailItem In detailGroup.DefaultIfEmpty()
+                        Select ID = masterRow.Field(Of Integer)("ID"),
+                               PN = masterRow.Field(Of String)("PN"),
+                               SalesOrg = detailItem.Field(Of String)("SalesOrg"),
+                               Price = detailItem.Field(Of Decimal)("Price")
+            ' Bind the query result to the GridView
+            gvTest.DataSource = query.ToList()
+            gvTest.DataBind()
         End If
     End Sub
     Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         ' Iterate through each row in the GridView
-        For Each row As GridViewRow In gvitems.Rows
+        For Each row As GridViewRow In gvTest.Rows
             ' Find the controls for price editing
             Dim txtPrice As TextBox = CType(row.FindControl("txtPrice"), TextBox)
 
@@ -38,13 +41,8 @@
     End Sub
 
     Private Sub UpdatePriceInDatabase(itemId As Integer, newPrice As Decimal)
-        ' Update the database with the new price
-        Using db As New DataClasses1DataContext(ConnectionString)
-            Dim item = db.ItemDetails.FirstOrDefault(Function(i) i.ID = itemId)
-            If item IsNot Nothing Then
-                item.Price = newPrice
-                db.SubmitChanges()
-            End If
-        End Using
+        Dim myDaTest As New daTest()
+        myDaTest.InitializeAndFill()
+        myDaTest.UpdatePrice(itemId, newPrice)
     End Sub
 End Class

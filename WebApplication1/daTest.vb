@@ -21,12 +21,7 @@ Public Class daTest
     Public Function ReadTest() As Integer
         Dim recordsRead As Integer = 0
 
-        ' Fill ItemMaster
-        taIM.Fill(ds.ItemMaster)
         recordsRead += ds.ItemMaster.Rows.Count
-
-        ' Fill ItemDetail
-        taID.Fill(ds.ItemDetail)
         recordsRead += ds.ItemDetail.Rows.Count
 
         Return recordsRead
@@ -34,11 +29,12 @@ Public Class daTest
 
     ' 3.6 Initialize taIM and taID and fill dataset
     Public Sub InitializeAndFill()
-        ' Initialize taIM and taID (already initialized in properties)
-
-        ' Fill dataset
         taIM.Fill(ds.ItemMaster)
         taID.Fill(ds.ItemDetail)
     End Sub
 
+    Public Sub UpdatePrice(ItemId As Integer, Price As Decimal)
+        ds.ItemDetail.FirstOrDefault(Function(row) row.Field(Of Integer)("ID") = ItemId).Price = Price
+        taID.Update(ds.ItemDetail)
+    End Sub
 End Class
