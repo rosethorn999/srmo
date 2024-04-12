@@ -15,7 +15,8 @@
                     <asp:BoundField DataField="SalesOrg" HeaderText="SalesOrg" HeaderStyle-Width="100" />
                     <asp:TemplateField HeaderText="Price">
                         <ItemTemplate>
-                            <asp:TextBox ID="txtPrice" runat="server" Text='<%# Eval("Price") %>'></asp:TextBox>
+                             <span style="position: absolute; margin-left: 1px; margin-top: 1px;">$</span>
+                            <asp:TextBox ID="txtPrice" runat="server" Text='<%# Eval("Price") %>' TextMode="Number" step="any" style="text-align: right"></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

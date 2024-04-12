@@ -15,7 +15,7 @@
                         Select ID = masterRow.Field(Of Integer)("ID"),
                                PN = masterRow.Field(Of String)("PN"),
                                SalesOrg = detailItem.Field(Of String)("SalesOrg"),
-                               Price = detailItem.Field(Of Decimal)("Price")
+                               Price = detailItem.Field(Of Decimal)("Price").ToString("#0.00")
             ' Bind the query result to the GridView
             gvTest.DataSource = query.ToList()
             gvTest.DataBind()
